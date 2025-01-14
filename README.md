@@ -1,7 +1,6 @@
 Password Strength Analyzer Tool Report
 
 Date: 2025-01-14
-Prepared by: GitHub Copilot
 Overview
 
 This report details the implementation and effectiveness of a Password Strength Analyzer Tool developed using Python. The tool provides a user-friendly interface for users to input their passwords, evaluates the strength of the passwords based on various criteria, and hashes the passwords for security.
@@ -57,15 +56,12 @@ def evaluate_password_strength(password):
         (r'\d', 'At least one digit'),
         (r'[!@#$%^&*(),.?":{}|<>]', 'At least one special character')
     ]
-    
     passed_criteria = []
     for regex, desc in criteria:
         if re.search(regex, password):
             strength += 1
             passed_criteria.append(desc)
-    
     return strength, passed_criteria
-
 # Function to hash the password
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
@@ -74,10 +70,8 @@ def hash_password(password):
 def analyze_password():
     password = password_entry.get()
     strength, passed_criteria = evaluate_password_strength(password)
-    
     strength_levels = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"]
     strength_message = f"Strength: {strength_levels[strength]}\n\nCriteria Passed:\n" + "\n".join(passed_criteria)
-    
     hashed_password = hash_password(password)
     messagebox.showinfo("Password Analysis", f"{strength_message}\n\nSHA-256 Hash:\n{hashed_password}")
 
